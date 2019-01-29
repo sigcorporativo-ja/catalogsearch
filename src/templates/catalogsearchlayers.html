@@ -1,0 +1,13 @@
+ {{#gt this.layers.length 0}}
+<div class="layers-list">
+    <ul class="list-group">
+        {{#each this.layers}}
+        <li class="list-group-item">
+            <input id="{{@index}}-{{this.Name}}" type="checkbox" data-title="{{this.Title}}" value="{{this.Name}}">
+            <label for="{{@index}}-{{this.Name}}">{{this.Title}}</label>
+        </li>
+        {{/each}}
+    </ul>
+    <button class="add-layers g-cartografia-mas" data-url="{{this.url}}" title="Añadir capas seleccionadas">Añadir capas</button>
+</div>
+{{/gt}}

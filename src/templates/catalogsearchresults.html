@@ -1,0 +1,38 @@
+<div class="results-panels">
+
+    <div class="results" id="m-catalogsearch-results-scroll">
+        {{#gt this.total 0}} {{#each this.services}}
+        <div id="{{this.uuid}}" class="result">
+            <div class="metadata-type" title="Tipo de metadato">{{this.metadata.type}}</div>
+            <h3>{{this.metadata.title}}</h3>
+            <div class="metadata-abstract">{{this.metadata.abstract}}</div>
+            <div class="metadata-full">
+                <span>
+                    <a class="active-link show-full-metadata" data-show="false" data-url="{{this.metadata.url}}">Ver
+                        metadato
+                        completo</a>
+                </span>
+                <div class="metadata-template dNone" title="Metadato completo de {{this.metadata.title}}"></div>
+            </div>
+            {{#if this.metadata.layersWMSUrl}}
+            <div class="layers-control">
+                <span>
+                    <a class="active-link show-layers" data-show="false" data-url="{{this.metadata.layersWMSUrl}}">Ver
+                        capas</a>
+                </span>
+                <div class="layers-list dNone" data-title="{{this.metadata.title}}" title="Capas de {{this.metadata.title}}"></div>
+            </div>
+            {{/if}}
+        </div>{{/each}} {{else}}
+        <div class="partial">No se han encontrado resultados para la búsqueda "{{query}}".</div>
+        {{/gt}}
+    </div>
+
+
+    <div class="page">
+        <span class="found" id="m-catalogsearch-page-found">{{services.length}}</span> de
+        <span class="total">{{total}}</span>
+        <div class="g-cartografia-flecha-arriba"></div>
+    </div>
+
+</div>
