@@ -127,6 +127,14 @@ div.search-panel>input.m-input-search {
     }
 }
 
+.m-catalogsearch-container .m-search-btn {
+    order: 1
+}
+
+.m-catalogsearch-container .m-clear-btn {
+    order: 3
+}
+
 /*********************
       RESULTS PANEL
  *********************/
