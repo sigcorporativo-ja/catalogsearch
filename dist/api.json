@@ -1,0 +1,36 @@
+{
+  "url": {
+    "name": "catalogsearch",
+    "separator": "*"
+  },
+  "constructor": "M.plugin.CatalogSearch",
+  "parameters": [{
+    "type": "object",
+    "properties": [{
+      "type": "simple",
+      "name": "name",
+      "position": 0
+    }, {
+      "type": "simple",
+      "name": "geoNetworkUrl_",
+      "position": 1
+    }]
+  }],
+  "files": {
+    "ol": {
+      "scripts": "catalogsearch.ol.min.js",
+      "styles": "catalogsearch.min.css"
+    }
+  },
+  "metadata": {
+    "name": "catalogsearch",
+    "description": "Búsqueda de catálogo",
+    "text": "Plugin de Mapea dedicado a realizar búsquedas sobre un catálogo de metados implementado con Geonetwork.",
+    "version": "1.0.0",
+    "date": "",
+    "author": "",
+    "org": "",
+    "tags": "mapea,plugin",
+    "icon": "./facade/assets/icons/icons.svg"
+  }
+}
