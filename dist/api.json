@@ -7,27 +7,35 @@
   "parameters": [{
     "type": "object",
     "properties": [{
-      "type": "simple",
-      "name": "name",
-      "position": 0
-    }, {
-      "type": "simple",
-      "name": "geoNetworkUrl_",
-      "position": 1
-    }]
+        "type": "enum",
+        "name": "position",
+        "possibleValues": ["TL", "TR", "BL", "BR"],
+        "position": 0
+      },
+      {
+        "type": "simple",
+        "name": "classname",
+        "position": 1
+      },
+      {
+        "type": "boolean",
+        "name": "collapsible",
+        "position": 1
+      }
+    ]
   }],
   "files": {
     "ol": {
       "scripts": "catalogsearch.ol.min.js",
-      "styles": "catalogsearch.min.css"
+      "styles": "catalogsearch.ol.min.css"
     }
   },
   "metadata": {
-    "name": "catalogsearch",
-    "description": "Búsqueda de catálogo",
-    "text": "Plugin de Mapea dedicado a realizar búsquedas sobre un catálogo de metados implementado con Geonetwork.",
+    "name": "CatalogSearch",
+    "description": "Realiza búsquedas sobre un catálogo ",
+    "text": "Dedicado a realizar búsquedas sobre un catálogo de metados implementado con Geonetwork.",
     "version": "1.0.0",
-    "date": "Jun 26, 2019",
+    "date": "Jul 10, 2019",
     "author": "",
     "org": "Instituto de Estadística y Cartografía",
     "tags": "mapea,plugin",
