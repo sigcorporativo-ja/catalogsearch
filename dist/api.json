@@ -5,22 +5,26 @@
   },
   "constructor": "M.plugin.CatalogSearch",
   "parameters": [{
+    "type": "simple",
+    "name": "geoNetworkUrl",
+    "position": 0
+  }, {
     "type": "object",
     "properties": [{
         "type": "enum",
         "name": "position",
         "possibleValues": ["TL", "TR", "BL", "BR"],
-        "position": 0
+        "position": 1
       },
       {
         "type": "simple",
         "name": "classname",
-        "position": 1
+        "position": 2
       },
       {
         "type": "boolean",
         "name": "collapsible",
-        "position": 1
+        "position": 3
       }
     ]
   }],
