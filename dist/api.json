@@ -5,12 +5,13 @@
   },
   "constructor": "M.plugin.CatalogSearch",
   "parameters": [{
-    "type": "simple",
-    "name": "geoNetworkUrl",
-    "position": 0
-  }, {
     "type": "object",
     "properties": [{
+        "type": "simple",
+        "name": "geoNetworkUrl",
+        "position": 0
+      },
+      {
         "type": "enum",
         "name": "position",
         "possibleValues": ["TL", "TR", "BL", "BR"],
@@ -36,7 +37,7 @@
   },
   "metadata": {
     "name": "CatalogSearch",
-    "description": "Realiza búsquedas sobre un catálogo.",
+    "description": "Realiza búsquedas sobre un catálogo ",
     "text": "Dedicado a realizar búsquedas sobre un catálogo de metados implementado con Geonetwork.",
     "version": "1.0.0",
     "date": "Jul 10, 2019",
