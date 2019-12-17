@@ -4,28 +4,14 @@
     "separator": "*"
   },
   "constructor": "M.plugin.CatalogSearch",
-  "parameters": [
-    {
-      "type": "object",
-      "properties": [
-        {
-          "type": "simple",
-          "name": "classname",
-          "position": 1
-        },
-        {
-          "type": "boolean",
-          "name": "collapsible",
-          "position": 2
-        },
-        {
-          "type": "simple",
-          "name": "geoNetworkUrl",
-          "position": 3
-        }
-      ]
-    }
-  ],
+  "parameters": [{
+    "type": "object",
+    "properties": [{
+      "type": "simple",
+      "name": "geoNetworkUrl",
+      "position": 3
+    }]
+  }],
   "files": {
     "ol": {
       "scripts": "catalogsearch.ol.min.js",

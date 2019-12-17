@@ -17,11 +17,6 @@ Al realizar la búsqueda, si alguno de los resultados es un servicio OGC, permit
 
 - **geoNetworkUrl**. URL de geoNetwork.
 
-- **classname**. Indica el nombre de la class que contiene el panel donde se encuentra el control. No es necesario añadir este parámetro. Su uso específico es para añadir estilos propios.
-
-- **collapsible**. Booleano que indica si el plugin se puede cerrar o si por el contrario aparece siempre desplegado.
-
-
 ## Ejemplos de uso
 
 ### Ejemplo 1
