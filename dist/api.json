@@ -14,8 +14,8 @@
   }],
   "files": {
     "ol": {
-      "scripts": "catalogsearch.ol.min.js",
-      "styles": "catalogsearch.ol.min.css"
+      "scripts": ["catalogsearch.ol.min.js"],
+      "styles": ["catalogsearch.ol.min.css"]
     }
   },
   "metadata": {
