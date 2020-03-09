@@ -27,6 +27,7 @@
     "author": "",
     "org": "Instituto de Estadística y Cartografía",
     "tags": "mapea,plugin",
-    "icon": "./facade/assets/icons/icons.svg"
+    "icon": "./facade/assets/icons/icons.svg",
+    "centralized": true
   }
 }
