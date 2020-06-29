@@ -4,7 +4,7 @@ Plugin de Mapea desarrollado por el Instituto de Estadística y Cartografía ded
 
 Al realizar la búsqueda, si alguno de los resultados es un servicio OGC, permitirá consultar las capas del mismo y añadirlas al mapa de forma interactiva
 
-![Imagen1](./img/catalogsearch_1.png)
+![Imagen1](../img/catalogsearch_1.png)
 
 ## Dependencias
 
