@@ -16,6 +16,7 @@ Al realizar la búsqueda, si alguno de los resultados es un servicio OGC, permit
 - El constructor se inicializa con un JSON de _options_ con los siguientes atributos:
 
 - **geoNetworkUrl**. URL de geoNetwork.
+- **collapsible**. Si es *true*, el botón aparece, y puede desplegarse y contraerse. Si es *false*, el botón no aparece. Por defecto tiene el valor *true*.
 
 ## Ejemplos de uso
 

@@ -337,7 +337,7 @@ export default class CatalogSearchControl extends M.Control {
             if (metadata.type === 'dataset' || metadata.type === 'series') {
               const metadataWMSUrl = this.checkNestedJSON_(
                 result, 'gmd:MD_Metadata', 'gmd:distributionInfo', 'gmd:MD_Distribution', 'gmd:distributor',
-                'gmd:MD_Distributor', 'gmd:distributorTransferOptions', 'gmd:MD_DigitalTransferOptions', 'gmd:onLine',
+                'gmd:MD_Distributor', 'gmd:distributorTransferOptions', 'gmd:MD_DigitalTransferOptions', 'gmd:onLine'
               );
               if (Array.isArray(metadataWMSUrl)) {
                 for (let j = 0; j < (metadataWMSUrl.length - 1); j += 1) {
@@ -356,7 +356,7 @@ export default class CatalogSearchControl extends M.Control {
             } else if (metadata.type === 'service') {
               const metadataWMSUrl = this.checkNestedJSON_(
                 result, 'gmd:MD_Metadata', 'gmd:identificationInfo', 'srv:SV_ServiceIdentification',
-                'srv:containsOperations',
+                'srv:containsOperations'
               );
               if (Array.isArray(metadataWMSUrl)) {
                 for (let j = 0; j < (metadataWMSUrl.length - 1); j += 1) {
