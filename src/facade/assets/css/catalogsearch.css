@@ -2,8 +2,8 @@
        GENERAL
 *********************/
 
-.m-catalogsearch-container {
-    width: 100%;
+.metadata-template.dNone {
+    display: none;
 }
 
 @media only screen and (min-width: 769px) {
@@ -17,13 +17,6 @@
     opacity: 1;
 }
 
-.m-catalogsearch-container .dNone {
-    display: none;
-}
-
-.m-areas>div.m-area>div.m-panel.m-catalogsearch>div.m-panel-controls {
-    display: block !important;
-}
 
 /****************************
       CATALOGSEARCH TITLE
@@ -64,6 +57,7 @@
     .m-catalogsearch-container {
         border-radius: 4px !important;
     }
+
     div.m-catalogsearch.collapsed>div.m-panel-controls {
         opacity: 100 !important;
         max-width: initial !important;
@@ -80,6 +74,7 @@
     div.m-catalogsearch div.m-panel-controls {
         display: flex !important;
     }
+
     div.m-catalogsearch-container.shown {
         display: initial !important;
     }
@@ -94,16 +89,19 @@
     div.search-panel>input.m-input-search {
         width: 75% !important;
     }
+
     div.search-panel>input.m-input-search::-ms-clear {
         display: none;
         width: 0;
         height: 0;
     }
+
     div.search-panel>input.m-input-search::-ms-reveal {
         display: none;
         width: 0;
         height: 0;
     }
+
     div#m-searching-result,
     div#m-searching-result-searchstreet,
     div#m-searching-result-catalogsearch,
@@ -188,6 +186,7 @@ div#m-autcomplete>div:hover {
 @media only screen and (max-width: 768px) {
     .results-panel>div.results {
         width: calc(100vw - 20px);
+        background-color: white;
     }
 }
 
@@ -382,11 +381,6 @@ div#m-autcomplete>div:hover {
     /*position: relative;*/
 }
 
-.m-catalogsearch-container .results-panel>div.results>div.result .metadata-full .feedTitleContainer {
-    /*div*/
-    /*position: relative;*/
-}
-
 .m-catalogsearch-container .results-panel>div.results>div.result .metadata-full .feedTitleText {
     /*h1*/
     font-size: 10pt;
@@ -440,6 +434,8 @@ div#m-autcomplete>div:hover {
 .m-catalogsearch-container .results-panel>div.results>div.result .metadata-full .feedEntry2Content {
     margin-left: 7px;
     margin-top: 10px;
+    background-color: white;
+
 }
 
 .m-catalogsearch-container .results-panel>div.results>div.result .metadata-full table {
