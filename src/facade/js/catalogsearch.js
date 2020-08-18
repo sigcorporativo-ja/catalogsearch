@@ -1,22 +1,11 @@
 /**
  * @module M/plugin/CatalogSearch
  */
-
-import CatalogSearchControl from './catalogsearchControl.js'
-import css from 'assets/css/catalogsearch.css'
+import 'assets/css/catalogsearch';
+import CatalogSearchControl from './catalogsearchcontrol';
+import api from '../../api';
 
 export default class CatalogSearch extends M.Plugin {
-  /**
-   * Name to identify this plugin
-   * @const
-   * @type {string}
-   * @public
-   * @api stable
-   */
-  static get NAME() {
-    return 'catalogsearch'
-  }
-
   /**
    * @classdesc
    * Main facade plugin object. This class creates a plugin
@@ -28,9 +17,9 @@ export default class CatalogSearch extends M.Plugin {
    * @api stable
    */
   constructor(parameters) {
-    super()
+    super();
 
-    parameters = parameters || {}
+    const varParameters = (parameters || {});
 
     /**
      * Facade of the map
@@ -47,7 +36,6 @@ export default class CatalogSearch extends M.Plugin {
     this.control_ = null
 
     /**
-     * TODO
      * @private
      * @type {M.ui.Panel}
      */
@@ -59,17 +47,41 @@ export default class CatalogSearch extends M.Plugin {
      * @type {string}
      * @api stable
      */
-    this.name = CatalogSearch.NAME
+    this.name_ = 'catalogsearch';
+
+    /**
+     * Classname of html Plugin
+     *
+     * @private
+     * @type {String}
+     */
+    this.className_ = varParameters.classname || 'm-catalogsearch';
+
+    /**
+     * Collapsible Plugin
+     *
+     * @private
+     * @type {boolean}
+     */
+    this.collapsible_ = varParameters.collapsible;
+    if (this.collapsible_ === undefined) this.collapsible_ = true;
 
     /**
      * Facade of the map
      * @private
      * @type {String}
      */
-    this.geoNetworkUrl_ = 'http://www.ideandalucia.es/catalogo/inspire/srv/spa'
-    if (!M.utils.isNullOrEmpty(parameters.geoNetworkUrl)) {
-      this.geoNetworkUrl_ = parameters.geoNetworkUrl
+    this.geoNetworkUrl_ = 'http://www.ideandalucia.es/catalogo/inspire/srv/spa';
+    if (!M.utils.isNullOrEmpty(varParameters.geoNetworkUrl)) {
+      this.geoNetworkUrl_ = varParameters.geoNetworkUrl;
     }
+
+    /**
+     * Metadata from api.json
+     * @private
+     * @type {Object}
+     */
+    this.metadata_ = api.metadata;
   }
 
   /**
@@ -83,20 +95,19 @@ export default class CatalogSearch extends M.Plugin {
   addTo(map) {
     this.map_ = map
 
-    map._areasContainer
-      .getElementsByClassName('m-top m-right')[0]
-      .classList.add('top-extra')
+    // eslint-disable-next-line no-underscore-dangle
+    map._areasContainer.getElementsByClassName('m-top m-right')[0].classList.add('top-extra');
 
-    this.control_ = new CatalogSearchControl(this.geoNetworkUrl_)
+    this.control_ = new CatalogSearchControl(this.geoNetworkUrl_);
     this.panel_ = new M.ui.Panel('catalogsearch', {
-      collapsible: true,
-      className: 'm-catalogsearch',
+      collapsible: this.collapsible_,
+      className: this.className_,
       collapsedButtonClass: 'g-cartografia-zoom',
       position: M.ui.position.TL,
       tooltip: 'Búsqueda en catálogo',
-    })
-    this.panel_.addControls(this.control_)
-    this.map_.addPanels(this.panel_)
+    });
+    this.panel_.addControls(this.control_);
+    this.map_.addPanels(this.panel_);
     this.control_.on(M.evt.ADDED_TO_MAP, () => {
       this.fire(M.evt.ADDED_TO_MAP)
     })
@@ -111,11 +122,11 @@ export default class CatalogSearch extends M.Plugin {
    * @api stable
    */
   getInput() {
-    var inputSearch = null
+    let inputSearch = null;
     if (!M.utils.isNullOrEmpty(this.control_)) {
       inputSearch = this.control_.getInput()
     }
-    return inputSearch
+    return inputSearch;
   }
 
   /**
@@ -126,12 +137,10 @@ export default class CatalogSearch extends M.Plugin {
    * @api stable
    */
   destroy() {
-    this.map_.removeControls([this.control_])
-    this.map_ = null
-    this.control_ = null
-    this.panel_ = null
-    this.geoNetworkUrl_ = null
-    this.searchParameters_ = null
+    this.map_.removeControls([this.control_]);
+    [this.map_, this.control_, this.panel_,
+      this.geoNetworkUrl_, this.searchParameters_,
+    ] = [null, null, null, null, null];
   }
 
   /**
@@ -143,10 +152,40 @@ export default class CatalogSearch extends M.Plugin {
    * @api stable
    */
   equals(plugin) {
+    let boolean = false;
     if (plugin instanceof CatalogSearch) {
-      return true
-    } else {
-      return false
+      boolean = true;
     }
+    return boolean;
+  }
+
+  /**
+   * This functions returns the controls of the plugin.
+   *
+   * @public
+   * @return {M.Control}
+   * @api
+   */
+  get control() {
+    return this.control_;
+  }
+
+  /**
+   * @getter
+   * @public
+   */
+  get name() {
+    return 'catalogsearch';
+  }
+
+  /**
+   * This function gets metadata plugin
+   *
+   * @public
+   * @function
+   * @api stable
+   */
+  getMetadata() {
+    return this.metadata_;
   }
 }

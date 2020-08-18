@@ -1,6 +1,3 @@
-/**
- * @module M/impl/control/CatalogSearchControl
- */
 export default class CatalogSearchControl extends M.impl.Control {
   /**
    * @classdesc
@@ -18,7 +15,7 @@ export default class CatalogSearchControl extends M.impl.Control {
      * @private
      * @type {M.Map}
      */
-    this.facadeMap_ = null
+    this.facadeMap_ = null;
   }
   /**
    * This function adds the control to the specified map
@@ -34,10 +31,10 @@ export default class CatalogSearchControl extends M.impl.Control {
     this.facadeMap_ = map
 
     ol.control.Control.call(this, {
-      element: element,
+      element,
       target: null,
-    })
-    map.getMapImpl().addControl(this)
+    });
+    map.getMapImpl().addControl(this);
   }
 
   /**
@@ -70,25 +67,20 @@ export default class CatalogSearchControl extends M.impl.Control {
   getLayersFromWMSCapabilities(url) {
     return new Promise((success, fail) => {
       // Version 1.3.0
-      let wmsGetCapabilitiesUrl = M.utils.getWMSGetCapabilitiesUrl(url, '1.3.0')
-      //console.log(wmsGetCapabilitiesUrl)
-      M.remote
-        .get(wmsGetCapabilitiesUrl)
-        .then((response) => {
-          try {
-            let getCapabilitiesDocument = response.xml
-            let getCapabilitiesParser = new M.impl.format.WMSCapabilities()
-            let getCapabilities = getCapabilitiesParser.read(
-              getCapabilitiesDocument
-            )
-            //let getCapabilitiesLayers = new M.impl.GetCapabilities(getCapabilities, url, this.facadeMap_.getProjection().code).getLayers();
-            success(getCapabilities)
-          } catch (error) {
-            //console.log(error)
-            fail(error)
-          }
-        })
-        .catch((err) => fail(err))
-    })
+      const wmsGetCapabilitiesUrl = M.utils.getWMSGetCapabilitiesUrl(url, '1.3.0');
+      // eslint-disable-next-line no-console
+      M.remote.get(wmsGetCapabilitiesUrl).then((response) => {
+        try {
+          const getCapabilitiesDocument = response.xml;
+          const getCapabilitiesParser = new M.impl.format.WMSCapabilities();
+          const getCapabilities = getCapabilitiesParser.read(getCapabilitiesDocument);
+          success(getCapabilities);
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.log(error);
+          fail(error);
+        }
+      }).catch(err => fail(err));
+    });
   }
 }

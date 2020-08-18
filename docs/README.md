@@ -1,29 +1,48 @@
-# Catalog search
+# M.plugin.CatalogSearch
 
-[![Build Tool](https://img.shields.io/badge/build-Webpack-green.svg)](https://github.com/sigcorporativo-ja/Mapea4-dev-webpack)  
+Plugin de Mapea desarrollado por el Instituto de Estadística y Cartografía dedicado a realizar búsquedas sobre un catálogo de metados implementado con Geonetwork.
 
-## Descripción
+Al realizar la búsqueda, si alguno de los resultados es un servicio OGC, permitirá consultar las capas del mismo y añadirlas al mapa de forma interactiva
 
- Plugin de [Mapea](https://github.com/sigcorporativo-ja/Mapea4) desarrollado por el [Instituto de Estadística y Cartografía](https://www.juntadeandalucia.es/institutodeestadisticaycartografia) dedicado a realizar búsquedas sobre un catálogo de metados implementado con Geonetwork.
- 
- Al realizar la búsqueda, si alguno de los resultados es un servicio OGC, permitirá consultar las capas del mismo y añadirlas al mapa de forma interactiva
+![Imagen1](images/catalogsearch_1.png)
 
- ![Imagen](./images/catalogsearch1.PNG)
+## Dependencias
 
- 
-## Recursos y uso
+- catalogsearch.ol.min.js
+- catalogsearch.ol.min.css
 
-- js: catalogsearch.ol.min.js
-- css: catalogsearch.min.css
+## Parámetros
 
+- El constructor se inicializa con un JSON de _options_ con los siguientes atributos:
+
+- **geoNetworkUrl**. URL de geoNetwork.
+- **collapsible**. Si es *true*, el botón aparece, y puede desplegarse y contraerse. Si es *false*, el botón no aparece. Por defecto tiene el valor *true*.
+
+## Ejemplos de uso
+
+### Ejemplo 1
 ```javascript
-// crear el plugin
-var mp = new M.plugin.CatalogSearch({
-    //url del catálogo de metadatos
-    geoNetworkUrl: 'http://www.ideandalucia.es/catalogo/inspire/srv/spa'
-}); 
+   const map = M.map({
+     container: 'map'
+   });
 
-// añadirlo al mapa
-myMap.addPlugin(mp);
+   const mp = new M.plugin.CatalogSearch({});
+
+   map.addPlugin(mp);
+```
+### Ejemplo 2
+```javascript
+const mp = new M.plugin.CatalogSearch({
+  geoNetworkUrl: 'http://www.ideandalucia.es/catalogo/inspire/srv/spa'
+  classname: 'm-class-name',
+  collapsible: false
 });
-```  
+
+map.addPlugin(mp);
+```
+### Ejemplo 3
+```javascript
+const mp = new M.plugin.CatalogSearch({});
+
+map.addPlugin(mp);
+```

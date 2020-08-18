@@ -1,42 +1,33 @@
-//INTEGRACIÓN DE PARÁMETROS EN API REST
-//OPCIONES - (1) Nuevo parámetro en la API REST, normalmente porque requiera parámetros 
-//de configuración.
-//Example: <url_mapea>?geosearch=
-//Example: <url_mapea>?printer=
-//(2) Nuevo valor para el parámetro plugins, el plugin no requiere configuración
-//Example: <url_mapea>?plugins=measurebar,streetview
-
-
-//Plugin sin parámetros
-
 {
-   "url": {
-      "name": "nombre_plugin"
-   },
-   "constructor": "M.plugin.nombre_plugin"
-}
-
-//Plugin con parámetros
-{
-   "url": {
-      "name": "geosearch",
-      "separator": "*"
-   },
-   "constructor": "M.plugin.Geosearch",
-   "parameters": [{
-      "type": "object",
-      "properties": [{
-         "type": "simple",
-         "name": "url",
-         "position": 0
-      }, {
-         "type": "simple",
-         "name": "core",
-         "position": 1
-      }, {
-         "type": "simple",
-         "name": "handler",
-         "position": 2
-      }]
-   }]
+  "url": {
+    "name": "catalogsearch",
+    "separator": "*"
+  },
+  "constructor": "M.plugin.CatalogSearch",
+  "parameters": [{
+    "type": "object",
+    "properties": [{
+      "type": "simple",
+      "name": "geoNetworkUrl",
+      "position": 3
+    }]
+  }],
+  "files": {
+    "ol": {
+      "scripts": ["catalogsearch.ol.min.js"],
+      "styles": ["catalogsearch.ol.min.css"]
+    }
+  },
+  "metadata": {
+    "name": "CatalogSearch",
+    "description": "Realiza búsquedas sobre un catálogo ",
+    "text": "Realiza búsquedas sobre un catálogo de metadatos implementado con Geonetwork.",
+    "version": "1.1.0",
+    "date": "Junio, 2020",
+    "author": "",
+    "org": "Instituto de Estadística y Cartografía. Junta de Andalucía",
+    "tags": "mapea,plugin",
+    "icon": "./facade/assets/icons/icons.svg",
+    "centralized": true
+  }
 }
