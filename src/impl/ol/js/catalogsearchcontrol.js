@@ -8,7 +8,7 @@ export default class CatalogSearchControl extends M.impl.Control {
    * @api stable
    */
   constructor() {
-    super()
+    super();
 
     /**
      * Facade of the map
@@ -28,7 +28,7 @@ export default class CatalogSearchControl extends M.impl.Control {
    */
   addTo(map, element) {
     // specific code
-    this.facadeMap_ = map
+    this.facadeMap_ = map;
 
     ol.control.Control.call(this, {
       element,
@@ -44,7 +44,7 @@ export default class CatalogSearchControl extends M.impl.Control {
    * @api stable
    */
   activate() {
-    M.dialog.info('Hello World!')
+    M.dialog.info('Hello World!');
   }
 
   /**
@@ -54,7 +54,7 @@ export default class CatalogSearchControl extends M.impl.Control {
    * @api stable
    */
   deactivate() {
-    M.dialog.info('Bye World!')
+    M.dialog.info('Bye World!');
   }
 
   /**

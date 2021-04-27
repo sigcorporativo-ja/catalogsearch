@@ -15,7 +15,7 @@ export default class CatalogSearchControl extends M.Control {
    * @api stable
    */
   static get NAME() {
-    return 'catalogsearch'
+    return 'catalogsearch';
   }
 
   /**
@@ -58,7 +58,7 @@ export default class CatalogSearchControl extends M.Control {
    * @api stable
    */
   static get SEARCHING_CLASS() {
-    return 'm-searching'
+    return 'm-searching';
   }
 
   /**
@@ -69,7 +69,7 @@ export default class CatalogSearchControl extends M.Control {
    * @api stable
    */
   static get HIDDEN_RESULTS_CLASS() {
-    return 'hidden'
+    return 'hidden';
   }
 
   /**
@@ -102,28 +102,28 @@ export default class CatalogSearchControl extends M.Control {
      * @private
      * @type {HTMLElement}
      */
-    this.element_ = null
+    this.element_ = null;
 
     /**
      * Container of the results
      * @private
      * @type {HTMLElement}
      */
-    this.resultsContainer_ = null
+    this.resultsContainer_ = null;
 
     /**
      * Container of the results to scroll
      * @private
      * @type {HTMLElement}
      */
-    this.resultsScrollContainer_ = null
+    this.resultsScrollContainer_ = null;
 
     /**
      * Searching result
      * @private
      * @type {HTMLElement}
      */
-    this.searchingResult_ = null
+    this.searchingResult_ = null;
 
     /**
      * Timestamp of the search to abort
@@ -131,21 +131,21 @@ export default class CatalogSearchControl extends M.Control {
      * @private
      * @type {Nunber}
      */
-    this.searchTime_ = 0
+    this.searchTime_ = 0;
 
     /**
      * Facade of the map
      * @private
      * @type {M.Map}
      */
-    this.geoNetworkUrl_ = geoNetworkUrl
+    this.geoNetworkUrl_ = geoNetworkUrl;
 
     /**
      * Results of the search
      * @private
      * @type {Array<Object>}
      */
-    this.results_ = { services: [] }
+    this.results_ = { services: [] };
 
     /**
      * Flag that indicates the scroll is up
@@ -153,14 +153,14 @@ export default class CatalogSearchControl extends M.Control {
      * @private
      * @type {Boolean}
      */
-    this.scrollIsUp_ = true
+    this.scrollIsUp_ = true;
 
     /**
      * Facade of the map
      * @private
      * @type {M.Map}
      */
-    this.facadeMap_ = null
+    this.facadeMap_ = null;
 
     // FUNCIONES a eventos para poder eliminarlos después
     this.boundResultsScroll_ = evt => this.resultsScroll_(evt);
@@ -196,7 +196,7 @@ export default class CatalogSearchControl extends M.Control {
    * @api stable
    */
   addEvents(html) {
-    this.element_ = html
+    this.element_ = html;
 
     this.on(M.evt.COMPLETED, () => {
       this.element_.classList.add('shown');
@@ -215,13 +215,9 @@ export default class CatalogSearchControl extends M.Control {
     btnClean.addEventListener('click', evt => this.clearClick_(evt));
 
     // results container
-    this.resultsContainer_ = this.element_.querySelector(
-      'div#m-catalogsearch-results'
-    )
-    M.utils.enableTouchScroll(this.resultsContainer_)
-    this.searchingResult_ = this.element_.querySelector(
-      'div#m-catalogsearch-results > div#m-searching-result'
-    )
+    this.resultsContainer_ = this.element_.querySelector('div#m-catalogsearch-results');
+    M.utils.enableTouchScroll(this.resultsContainer_);
+    this.searchingResult_ = this.element_.querySelector('div#m-catalogsearch-results > div#m-searching-result');
   }
 
   /**
@@ -232,11 +228,11 @@ export default class CatalogSearchControl extends M.Control {
    * @function
    */
   searchClick_(evt) {
-    evt.preventDefault()
+    evt.preventDefault();
 
     if ((evt.type !== 'keyup') || (evt.keyCode === 13)) {
       // resets the results
-      this.results_.services.length = 0
+      this.results_.services.length = 0;
 
       // gets the query
       const query = this.input_.value;
@@ -256,12 +252,12 @@ export default class CatalogSearchControl extends M.Control {
    * @function
    */
   search_(query, append = false) {
-    this.resultsContainer_.appendChild(this.searchingResult_)
+    this.resultsContainer_.appendChild(this.searchingResult_);
 
-    this.searchTime_ = Date.now()
+    this.searchTime_ = Date.now();
 
     // adds the class
-    this.element_.classList.add(CatalogSearchControl.SEARCHING_CLASS)
+    this.element_.classList.add(CatalogSearchControl.SEARCHING_CLASS);
 
     this.searchAny(query, this.searchTime_, append);
   }
@@ -300,22 +296,21 @@ export default class CatalogSearchControl extends M.Control {
               }));
             });
           }
-        )
 
-        // Una vez que estén resueltas todas las promesas, devuelvo el resultado
-        Promise.all(promises).then(() => {
-          if (append) {
-            this.results_.services = this.results_.services.concat((results.services));
-            this.appendResults_(results);
-          } else {
-            this.results_ = results;
-            this.showResults_();
-          }
-
-          this.element_.classList.remove(CatalogSearchControl.SEARCHING_CLASS)
-        })
+          // Una vez que estén resueltas todas las promesas, devuelvo el resultado
+          Promise.all(promises).then(() => {
+            if (append) {
+              this.results_.services = this.results_.services.concat((results.services));
+              this.appendResults_(results);
+            } else {
+              this.results_ = results;
+              this.showResults_();
+            }
+            this.element_.classList.remove(CatalogSearchControl.SEARCHING_CLASS);
+          });
+        });
       }
-    })
+    });
   }
 
   searchUuid(uuid, searchTime) {
@@ -340,7 +335,7 @@ export default class CatalogSearchControl extends M.Control {
             if (metadata.type === 'dataset' || metadata.type === 'series') {
               const metadataWMSUrl = this.checkNestedJSON_(
                 result, 'gmd:MD_Metadata', 'gmd:distributionInfo', 'gmd:MD_Distribution', 'gmd:distributor',
-                'gmd:MD_Distributor', 'gmd:distributorTransferOptions', 'gmd:MD_DigitalTransferOptions', 'gmd:onLine'
+                'gmd:MD_Distributor', 'gmd:distributorTransferOptions', 'gmd:MD_DigitalTransferOptions', 'gmd:onLine',
               );
               if (Array.isArray(metadataWMSUrl)) {
                 for (let j = 0; j < (metadataWMSUrl.length - 1); j += 1) {
@@ -359,7 +354,7 @@ export default class CatalogSearchControl extends M.Control {
             } else if (metadata.type === 'service') {
               const metadataWMSUrl = this.checkNestedJSON_(
                 result, 'gmd:MD_Metadata', 'gmd:identificationInfo', 'srv:SV_ServiceIdentification',
-                'srv:containsOperations'
+                'srv:containsOperations',
               );
               if (Array.isArray(metadataWMSUrl)) {
                 for (let j = 0; j < (metadataWMSUrl.length - 1); j += 1) {
@@ -375,12 +370,12 @@ export default class CatalogSearchControl extends M.Control {
                   metadata.layersWMSUrl = this.checkNestedJSON_(metadataWMSUrl, 'srv:SV_OperationMetadata', 'srv:connectPoint', 'gmd:CI_OnlineResource', 'gmd:linkage', 'gmd:URL');
                 }
               }
-              success(metadata)
             }
-          )
+            success(metadata);
+          });
         }
-      })
-    })
+      });
+    });
   }
 
   /**
@@ -415,7 +410,7 @@ export default class CatalogSearchControl extends M.Control {
         this.element_.classList.remove(CatalogSearchControl.SEARCHING_CLASS);
       });
     } else {
-      this.element_.classList.remove(CatalogSearchControl.SEARCHING_CLASS)
+      this.element_.classList.remove(CatalogSearchControl.SEARCHING_CLASS);
     }
   }
 
@@ -487,7 +482,7 @@ export default class CatalogSearchControl extends M.Control {
         M.dialog.error('No se ha podido parsear el metadato completo');
       });
     } else {
-      this.element_.classList.remove(CatalogSearchControl.SEARCHING_CLASS)
+      this.element_.classList.remove(CatalogSearchControl.SEARCHING_CLASS);
     }
   }
 
@@ -575,7 +570,7 @@ export default class CatalogSearchControl extends M.Control {
    * @api stable
    */
   getInput() {
-    return this.input_
+    return this.input_;
   }
 
   /**
@@ -648,7 +643,7 @@ export default class CatalogSearchControl extends M.Control {
       this.scrollSearch_();
     } else if (!scrollIsDown) {
       // updates the scroll state
-      this.scrollIsUp_ = true
+      this.scrollIsUp_ = true;
     }
   }
 
@@ -660,7 +655,7 @@ export default class CatalogSearchControl extends M.Control {
    * @function
    */
   scrollSearch_() {
-    this.search_(this.results_.query, true)
+    this.search_(this.results_.query, true);
   }
 
   /**
@@ -673,19 +668,17 @@ export default class CatalogSearchControl extends M.Control {
   clearClick_(evt) {
     this.element_.classList.remove('shown');
     if (!M.utils.isNullOrEmpty(this.input_)) {
-      this.input_.value = ''
+      this.input_.value = '';
     }
     if (!M.utils.isNullOrEmpty(this.resultsContainer_)) {
-      this.resultsContainer_.innerHTML = ''
+      this.resultsContainer_.innerHTML = '';
     }
     if (!M.utils.isNullOrEmpty(this.resultsScrollContainer_)) {
-      this.resultsScrollContainer_.innerHTML = ''
-      this.resultsScrollContainer_ = null
+      this.resultsScrollContainer_.innerHTML = '';
+      this.resultsScrollContainer_ = null;
     }
-    this.results_.services.length = 0
-    this.resultsContainer_.classList.remove(
-      CatalogSearchControl.HIDDEN_RESULTS_CLASS
-    )
+    this.results_.services.length = 0;
+    this.resultsContainer_.classList.remove(CatalogSearchControl.HIDDEN_RESULTS_CLASS);
   }
 
   /**
@@ -711,11 +704,11 @@ export default class CatalogSearchControl extends M.Control {
    * @api stable
    */
   equals(obj) {
-    let equals = false
+    let equals = false;
     if (obj instanceof CatalogSearchControl) {
-      equals = this.name === obj.name
+      equals = this.name === obj.name;
     }
-    return equals
+    return equals;
   }
 
   /**
@@ -725,7 +718,7 @@ export default class CatalogSearchControl extends M.Control {
    * @function
    */
   checkScrollSearch_() {
-    if ((this.results_.services.length === this.results_.total) &&
+    if ((this.results_.services.length === Number(this.results_.total)) &&
       (!M.utils.isNullOrEmpty(this.resultsScrollContainer_))) {
       this.resultsScrollContainer_.removeEventListener('scroll', this.boundResultsScroll_);
     }
@@ -744,10 +737,10 @@ export default class CatalogSearchControl extends M.Control {
     for (let i = 1; i < args.length; i += 1) {
       // eslint-disable-next-line no-prototype-builtins
       if (!obj || !obj.hasOwnProperty(args[i])) {
-        return null
+        return null;
       }
-      obj = obj[args[i]]
+      obj = obj[args[i]];
     }
-    return obj
+    return obj;
   }
 }

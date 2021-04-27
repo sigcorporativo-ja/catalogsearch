@@ -26,20 +26,20 @@ export default class CatalogSearch extends M.Plugin {
      * @private
      * @type {M.Map}
      */
-    this.map_ = null
+    this.map_ = null;
 
     /**
      * Control that executes the searches
      * @private
      * @type {Object}
      */
-    this.control_ = null
+    this.control_ = null;
 
     /**
      * @private
      * @type {M.ui.Panel}
      */
-    this.panel_ = null
+    this.panel_ = null;
 
     /**
      * Name of this control
@@ -93,7 +93,7 @@ export default class CatalogSearch extends M.Plugin {
    * @api stable
    */
   addTo(map) {
-    this.map_ = map
+    this.map_ = map;
 
     // eslint-disable-next-line no-underscore-dangle
     map._areasContainer.getElementsByClassName('m-top m-right')[0].classList.add('top-extra');
@@ -109,8 +109,8 @@ export default class CatalogSearch extends M.Plugin {
     this.panel_.addControls(this.control_);
     this.map_.addPanels(this.panel_);
     this.control_.on(M.evt.ADDED_TO_MAP, () => {
-      this.fire(M.evt.ADDED_TO_MAP)
-    })
+      this.fire(M.evt.ADDED_TO_MAP);
+    });
   }
 
   /**
@@ -124,7 +124,7 @@ export default class CatalogSearch extends M.Plugin {
   getInput() {
     let inputSearch = null;
     if (!M.utils.isNullOrEmpty(this.control_)) {
-      inputSearch = this.control_.getInput()
+      inputSearch = this.control_.getInput();
     }
     return inputSearch;
   }

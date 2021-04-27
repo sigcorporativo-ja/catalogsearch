@@ -22,12 +22,13 @@
     "name": "CatalogSearch",
     "description": "Realiza búsquedas sobre un catálogo ",
     "text": "Realiza búsquedas sobre un catálogo de metadatos implementado con Geonetwork.",
-    "version": "1.1.0",
-    "date": "Junio, 2020",
+    "version": "1.1.1",
+    "date": "Abril, 2021",
     "author": "",
     "org": "Instituto de Estadística y Cartografía. Junta de Andalucía",
     "tags": "mapea,plugin",
     "icon": "./facade/assets/icons/icons.svg",
-    "centralized": true
+    "centralized": true,
+    "compatibility":["5","6"]
   }
 }
