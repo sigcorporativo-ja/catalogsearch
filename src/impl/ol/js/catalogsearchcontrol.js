@@ -29,12 +29,7 @@ export default class CatalogSearchControl extends M.impl.Control {
   addTo(map, element) {
     // specific code
     this.facadeMap_ = map;
-
-    ol.control.Control.call(this, {
-      element,
-      target: null,
-    });
-    map.getMapImpl().addControl(this);
+    super.addTo(map, element);
   }
 
   /**
